@@ -28,8 +28,6 @@ jobs:
       - name: Prepare GX-web deployment
         run: |
           mkdir -p ./output/GX-web
-          echo "Copying all files from GX-web to output directory..."
-          cp -R ./GX-web/* ./output/GX-web/
           echo "Copying all files from GX-web except index.html..."
           find ./GX-web -type f ! -name "index.html" -exec cp --parents {} ./output/GX-web/ \;
           echo "Output directory structure for GX-web:"
@@ -56,7 +54,7 @@ jobs:
 
       - name: Prepare GX-blockchain deployment
         run: |
-          mkdir -p ./output-gx-blockchain
+          mkdir -p ./output/GX-blockchain
           echo "Copying all files from GX-blockchain to output directory..."
           cp -R ./GX-blockchain/* ./output/GX-blockchain/
           echo "Moving index.html from GX-blockchain/static to root of output/GX-blockchain..."
