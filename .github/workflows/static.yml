@@ -27,7 +27,6 @@ jobs:
 
       - name: Prepare GX-web deployment
         run: |
-          # Create a temporary output directory for GX-web
           mkdir -p ./output-gx-web
           echo "Copying all files from GX-web to output directory..."
           cp -R ./GX-web/* ./output-gx-web/
@@ -55,7 +54,6 @@ jobs:
 
       - name: Prepare GX-blockchain deployment
         run: |
-          # Create a temporary output directory for GX-blockchain
           mkdir -p ./output-gx-blockchain
           echo "Copying all files from GX-blockchain to output directory..."
           cp -R ./GX-blockchain/* ./output-gx-blockchain/
