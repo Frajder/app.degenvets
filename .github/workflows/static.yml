@@ -27,18 +27,18 @@ jobs:
 
       - name: Prepare GX-web deployment
         run: |
-          mkdir -p ./output-gx-web
+          mkdir -p ./output/GX-web
           echo "Copying all files from GX-web to output directory..."
-          cp -R ./GX-web/* ./output-gx-web/
+          cp -R ./GX-web/* ./output/GX-web/
           echo "Copying all files from GX-web except index.html..."
-          find ./GX-web -type f ! -name "index.html" -exec cp --parents {} ./output-gx-web/ \;
+          find ./GX-web -type f ! -name "index.html" -exec cp --parents {} ./output/GX-web/ \;
           echo "Output directory structure for GX-web:"
-          ls -R ./output-gx-web
+          ls -R ./output/GX-web
 
       - name: Upload GX-web artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './output-gx-web'
+          path: './output/GX-web'
 
       - name: Deploy GX-web to GitHub Pages
         id: deployment-web
@@ -58,16 +58,16 @@ jobs:
         run: |
           mkdir -p ./output-gx-blockchain
           echo "Copying all files from GX-blockchain to output directory..."
-          cp -R ./GX-blockchain/* ./output-gx-blockchain/
-          echo "Moving index.html from GX-blockchain/static to root of output-gx-blockchain..."
-          cp ./GX-blockchain/static/index.html ./output-gx-blockchain/index.html
+          cp -R ./GX-blockchain/* ./output/GX-blockchain/
+          echo "Moving index.html from GX-blockchain/static to root of output/GX-blockchain..."
+          cp ./GX-blockchain/static/index.html ./output/GX-blockchain/index.html
           echo "Output directory structure for GX-blockchain:"
-          ls -R ./output-gx-blockchain
+          ls -R ./output/GX-blockchain
 
       - name: Upload GX-blockchain artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './output-gx-blockchain'
+          path: './output/GX-blockchain'
 
       - name: Deploy GX-blockchain to GitHub Pages
         id: deployment-blockchain
