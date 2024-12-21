@@ -1,4 +1,4 @@
-name: Deploy static content to Pages
+name: Deploy GX-blockchain content to Pages
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-blockchain"
   cancel-in-progress: false
 
 jobs:
@@ -31,11 +31,11 @@ jobs:
         run: |
           # Create a temporary output directory
           mkdir -p ./output
-          echo "Copying files to output directory, excluding output itself..."
-          find . -mindepth 1 -maxdepth 1 ! -name "output" -exec cp -R {} ./output/ \;
-          echo "Moving index.html from GX-blockchain/static to root..."
+          echo "Copying all files from GX-blockchain to output directory..."
+          cp -R ./GX-blockchain/* ./output/
+          echo "Moving index.html from GX-blockchain/static to root of output..."
           cp ./GX-blockchain/static/index.html ./output/index.html
-          echo "Output directory structure:"
+          echo "Output directory structure after copying from GX-blockchain:"
           ls -R ./output
 
       - name: Upload artifact
