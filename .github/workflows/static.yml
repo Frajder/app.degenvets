@@ -30,6 +30,8 @@ jobs:
           mkdir -p ./output-gx-web
           echo "Copying all files from GX-web to output directory..."
           cp -R ./GX-web/* ./output-gx-web/
+          echo "Copying all files from GX-web except index.html..."
+          find ./GX-web -type f ! -name "index.html" -exec cp --parents {} ./output-gx-web/ \;
           echo "Output directory structure for GX-web:"
           ls -R ./output-gx-web
 
