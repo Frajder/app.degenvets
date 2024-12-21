@@ -1,4 +1,4 @@
-name: Deploy GX-blockchain content to Pages
+name: Deploy GX-web and GX-blockchain content to Pages
 
 on:
   push:
@@ -11,38 +11,64 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages-blockchain"
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  deploy-gx-web:
+    name: Deploy GX-web Content
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare deployment
+      - name: Prepare GX-web deployment
         run: |
-          # Create a temporary output directory
-          mkdir -p ./output
-          echo "Copying all files from GX-blockchain to output directory..."
-          cp -R ./GX-blockchain/* ./output/
-          echo "Moving index.html from GX-blockchain/static to root of output..."
-          cp ./GX-blockchain/static/index.html ./output/index.html
-          echo "Output directory structure after copying from GX-blockchain:"
-          ls -R ./output
+          # Create a temporary output directory for GX-web
+          mkdir -p ./output-gx-web
+          echo "Copying all files from GX-web to output directory..."
+          cp -R ./GX-web/* ./output-gx-web/
+          echo "Output directory structure for GX-web:"
+          ls -R ./output-gx-web
 
-      - name: Upload artifact
+      - name: Upload GX-web artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './output'
+          path: './output-gx-web'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy GX-web to GitHub Pages
+        id: deployment-web
+        uses: actions/deploy-pages@v4
+
+  deploy-gx-blockchain:
+    name: Deploy GX-blockchain Content
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare GX-blockchain deployment
+        run: |
+          # Create a temporary output directory for GX-blockchain
+          mkdir -p ./output-gx-blockchain
+          echo "Copying all files from GX-blockchain to output directory..."
+          cp -R ./GX-blockchain/* ./output-gx-blockchain/
+          echo "Moving index.html from GX-blockchain/static to root of output-gx-blockchain..."
+          cp ./GX-blockchain/static/index.html ./output-gx-blockchain/index.html
+          echo "Output directory structure for GX-blockchain:"
+          ls -R ./output-gx-blockchain
+
+      - name: Upload GX-blockchain artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './output-gx-blockchain'
+
+      - name: Deploy GX-blockchain to GitHub Pages
+        id: deployment-blockchain
         uses: actions/deploy-pages@v4
