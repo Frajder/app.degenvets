@@ -75,3 +75,29 @@ jobs:
       - name: Deploy GX-blockchain to GitHub Pages
         id: deployment-blockchain
         uses: actions/deploy-pages@v4
+
+          deploy-docs:
+    name: Deploy docs Content
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare docs deployment
+        run: |
+          mkdir -p ./output/docs
+          echo "Copying all files from GX-web except index.html..."
+          echo "Output directory structure for docs:"
+          ls -R ./output/docs
+
+      - name: Upload GX-web artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './output/docs'
+
+      - name: Deploy docs to GitHub Pages
+        id: deployment-web
+        uses: actions/deploy-pages@v4
