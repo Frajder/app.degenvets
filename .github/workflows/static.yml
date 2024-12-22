@@ -76,7 +76,7 @@ jobs:
         id: deployment-blockchain
         uses: actions/deploy-pages@v4
 
-          deploy-docs:
+  deploy-docs:
     name: Deploy docs Content
     runs-on: ubuntu-latest
     steps:
