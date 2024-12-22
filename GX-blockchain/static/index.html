@@ -33,8 +33,33 @@
               <a data-page="profile-preferences">Preferences</a>
           </div>
       </div>
-      <a data-page="portfolio">Portfolio</a>
-      <a data-page="market">Marketplace</a>
+
+      <div class="menu-item">
+        <a class="menu-toggle-btn" data-submenu="portfolio-submenu">
+            Portfolio
+            <span class="submenu-arrow">▼</span>
+        </a>
+        <div class="submenu" id="portfolio-submenu">
+            <a data-page="portfolio">Wallet</a>
+            <a data-page="portfolio-award">Achievements</a>
+            <a data-page="portfolio-status">Rank</a>
+            <a data-page="portfolio-preferences">Preferences</a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+      <a class="menu-toggle-btn" data-submenu="market-submenu">
+          Market
+          <span class="submenu-arrow">▼</span>
+      </a>
+      <div class="submenu" id="market-submenu">
+        <a data-page="market">Marketplace</a>
+          <a data-page="market-settings">Issues</a>
+          <a data-page="market-security">Bugs</a>
+          <a data-page="market-preferences">Help Wanted</a>
+      </div>
+  </div>
+
       <div class="menu-item">
         <a class="menu-toggle-btn" data-submenu="services-submenu">
             Work Tickets
