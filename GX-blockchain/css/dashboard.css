@@ -1,3 +1,5 @@
+@import url('../../GX-web/css/chat.css');
+@import url('../../GX-web/css/btn.css');
 body {
     margin: 0;
     padding: 0;
@@ -24,7 +26,14 @@ body {
     top: 20px;
     right: 20px;
     z-index: 1001;
-    margin-top: 0 !important; /* Override default margin from cta-button3 */
+    margin-top: 0 !important;
+}
+.connect-btn1 {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    margin-top: 0 !important;
 }
 
 .hamburger-line {

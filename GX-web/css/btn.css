@@ -1,5 +1,11 @@
 .cta-button {
-    margin-top: 10px;
+    margin-top: 15px;
+    background-color: transparent;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    padding-left: 5px;
+
 }
 .cta-button2 {
     margin-top: 20px;
