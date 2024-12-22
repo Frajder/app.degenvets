@@ -89,11 +89,13 @@ jobs:
       - name: Prepare docs deployment
         run: |
           mkdir -p ./output/docs
-          echo "Copying all files from GX-web except index.html..."
+          echo "Copying all files from docs except index.html..."
+          find ./docs -type f ! -name "index.html" -exec cp --parents {} ./output/docs/ \;
+          echo "Copying all files from docs except index.html..."
           echo "Output directory structure for docs:"
           ls -R ./output/docs
 
-      - name: Upload GX-web artifact
+      - name: Upload docs artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/docs'
