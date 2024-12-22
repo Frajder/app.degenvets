@@ -1,34 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Degen Vets</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/180209438?s=400&u=1b338abb15b69eaa77051408fd0c89efc26964b5&v=4" type="DegenVets">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="#home">
-                    <img src="https://avatars.githubusercontent.com/u/180209438?s=400&u=1b338abb15b69eaa77051408fd0c89efc26964b5&v=4" alt="Degen Vets Logo">
-                </a>
+    <button class="menu-toggle">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </button>
+
+    <button class="connect-btn cta-button3">Connect</button>
+
+    <div class="overlay"></div>
+
+    <div class="sidebar">
+        <a data-page="dashboard">Dashboard</a>
+        <a data-page="profile">Profile</a>
+        <a data-page="inbox">Inbox</a>
+        <a data-page="settings">Settings</a>
+        <a data-page="services">Services</a>
+        <a data-page="portfolio">Portfolio</a>
+        <a data-page="market">Market</a>
+        <a data-page="../../docs/static/privacy.html">Terms</a>
+
+    </div>
+
+    <div class="content">
+        <div id="dashboard" class="content-section active">
+            <h1>Welcome</h1>
+            <hr>
+            <p>COMING SOON</p>
+        </div>
+
+        <div id="profile" class="content-section">
+            <h1>Profile</h1>
+            <hr>
+            <p>Hello! Profile coming soon ...</p>
+        </div>
+
+        <div id="inbox" class="content-section">
+            <h1>Messages</h1>
+            <hr>
+            <p>Hello! Chat coming soon ...</p>
+            <div id="chat-button" class="chat-button">
+                💬 Chat
             </div>
-            <ul class="menu">
-                <a href="#wallet" class="cta-button">Connect</a>
-                <a href="#support" class="cta-button">support</a>
-                <a href="../../docs/static/privacy.html" target="_blank" class="cta-button">Policy</a>
-            </ul>
-        </nav>
-    </header>
+            <div id="chat-widget" class="chat-widget hidden">
+                <div class="chat-header">
+                    Assistant
+                    <button id="close-chat">✖</button>
+                </div>
+                <div class="chat-body" id="chat-body"></div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Type a message...">
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+        </div>
 
-    <main>
-        <section id="home" class="container">
-        </section>
+        <div id="portfolio" class="content-section">
+            <h1>Portfolio</h1>
+            <hr>
+            <p>Hello! Coming Soon ...</p>
+        </div>
 
-        <section id="mint" class="container">
+        <div id="settings" class="content-section">
+            <h1>Settings</h1>
+            <hr>
+            <p>COMING SOONSSSSSsssss</p>
+        </div>
+
+        <div id="market" class="content-section">
             <h1>Mint Pass</h1>
+            <hr>
             <div id="donate-form" class="donate-container">
                 <h2>Legacy Supporter</h2>
     
@@ -81,29 +127,15 @@
                 </div>
               </div>
         </div>
-    
-        </section>
-    </main>
-
-    <div id="chat-button" class="chat-button">
-        💬 Chat
-    </div>
-    <div id="chat-widget" class="chat-widget hidden">
-        <div class="chat-header">
-            Assistant
-            <button id="close-chat">✖</button>
         </div>
-        <div class="chat-body" id="chat-body"></div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Type a message...">
-            <button id="send-message">Send</button>
+
+        <div id="services" class="content-section">
+            <h1>Services</h1>
+            <hr>
+            <p>Coming Soon</p>
         </div>
     </div>
 
-    <footer>
-    </footer>
-
-    <script type="module" src="../js/main.js"></script>
-
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
