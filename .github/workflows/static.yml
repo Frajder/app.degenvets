@@ -1,4 +1,4 @@
-name: Deploy GX-web and GX-blockchain docs content to Pages
+name: Deploy GX-web, GX-blockchain, and docs content to Pages
 
 on:
   push:
@@ -37,6 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/GX-web'
+          artifact_name: 'gx-web-pages'
 
       - name: Deploy GX-web to GitHub Pages
         id: deployment-web
@@ -71,6 +72,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/GX-blockchain'
+          artifact_name: 'gx-blockchain-pages'
 
       - name: Deploy GX-blockchain to GitHub Pages
         id: deployment-blockchain
@@ -98,6 +100,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/docs'
+          artifact_name: 'docs-pages'
 
       - name: Deploy docs to GitHub Pages
         id: deployment-docs
