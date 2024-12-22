@@ -1,5 +1,5 @@
-@import url('../../GX-web/css/chat.css');
-@import url('../../GX-web/css/btn.css');
+@import url('../chat.css');
+@import url('../btn.css');
 body {
     margin: 0;
     padding: 0;
