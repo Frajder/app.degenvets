@@ -1,4 +1,4 @@
-name: Deploy GX-web, GX-blockchain, and docs content to Pages
+name: Deploy GX-web and GX-blockchain content to Pages
 
 on:
   push:
@@ -37,7 +37,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/GX-web'
-          artifact_name: 'gx-web-pages'
 
       - name: Deploy GX-web to GitHub Pages
         id: deployment-web
@@ -72,13 +71,12 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/GX-blockchain'
-          artifact_name: 'gx-blockchain-pages'
 
       - name: Deploy GX-blockchain to GitHub Pages
         id: deployment-blockchain
         uses: actions/deploy-pages@v4
 
-  deploy-docs:
+          deploy-docs:
     name: Deploy docs Content
     runs-on: ubuntu-latest
     steps:
@@ -93,6 +91,7 @@ jobs:
           mkdir -p ./output/docs
           echo "Copying all files from docs except index.html..."
           find ./docs -type f ! -name "index.html" -exec cp --parents {} ./output/docs/ \;
+          echo "Copying all files from docs except index.html..."
           echo "Output directory structure for docs:"
           ls -R ./output/docs
 
@@ -100,8 +99,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './output/docs'
-          artifact_name: 'docs-pages'
 
       - name: Deploy docs to GitHub Pages
-        id: deployment-docs
+        id: deployment-web
         uses: actions/deploy-pages@v4
