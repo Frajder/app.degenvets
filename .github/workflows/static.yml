@@ -1,4 +1,4 @@
-name: Deploy GX-web and GX-blockchain content to Pages
+name: Deploy GX-web and GX-blockchain docs content to Pages
 
 on:
   push:
@@ -100,5 +100,5 @@ jobs:
           path: './output/docs'
 
       - name: Deploy docs to GitHub Pages
-        id: deployment-web
+        id: deployment-docs
         uses: actions/deploy-pages@v4
