@@ -76,7 +76,7 @@ jobs:
         id: deployment-blockchain
         uses: actions/deploy-pages@v4
 
-          deploy-docs:
+  deploy-docs:
     name: Deploy docs Content
     runs-on: ubuntu-latest
     steps:
@@ -91,7 +91,6 @@ jobs:
           mkdir -p ./output/docs
           echo "Copying all files from docs except index.html..."
           find ./docs -type f ! -name "index.html" -exec cp --parents {} ./output/docs/ \;
-          echo "Copying all files from docs except index.html..."
           echo "Output directory structure for docs:"
           ls -R ./output/docs
 
