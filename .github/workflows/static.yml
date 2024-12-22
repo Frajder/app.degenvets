@@ -58,14 +58,14 @@ jobs:
           echo "Copying all files from GX-blockchain to output directory..."
           cp -R ./GX-blockchain/* ./output/GX-blockchain/
           echo "Moving index.html from GX-blockchain/static to root of output/GX-blockchain..."
-          cp ./GX-blockchain/static/index.html ./output/GX-blockchain/index.html
+          cp ./GX-blockchain/static/index.html ./output/GX-blockchain/static/index.html
           echo "Output directory structure for GX-blockchain:"
           ls -R ./output/GX-blockchain
 
       - name: Upload GX-blockchain artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './output/GX-blockchain'
+          path: './output/GX-blockchain/static'
 
       - name: Deploy GX-blockchain to GitHub Pages
         id: deployment-blockchain
