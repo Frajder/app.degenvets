@@ -1,4 +1,7 @@
 @import url('../../GX-web/css/main.css');
+@import url('./css/hamburger.css');
+@import url('./css/styles.css');
+
 
 :root {
     --primary-color: #ff00004981;

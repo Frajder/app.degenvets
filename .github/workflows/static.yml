@@ -1,4 +1,4 @@
-name: Deploy GX-web and GX-blockchain content to Pages
+name: Deploy GX-web and GX-blockchain docs content to Pages
 
 on:
   push:
@@ -91,7 +91,6 @@ jobs:
           mkdir -p ./output/docs
           echo "Copying all files from docs except index.html..."
           find ./docs -type f ! -name "index.html" -exec cp --parents {} ./output/docs/ \;
-          echo "Copying all files from docs except index.html..."
           echo "Output directory structure for docs:"
           ls -R ./output/docs
 
@@ -101,5 +100,5 @@ jobs:
           path: './output/docs'
 
       - name: Deploy docs to GitHub Pages
-        id: deployment-web
+        id: deployment-docs
         uses: actions/deploy-pages@v4
