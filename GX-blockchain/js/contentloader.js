@@ -11,31 +11,32 @@ const FADE_DURATION = 500; // milliseconds
 // Map of page identifiers to their corresponding HTML file paths
 const PAGE_MAPPINGS = {
     // Profile section
-    'inbox': './profile/inbox.htm',
+    'profile-inbox': './profile/inbox.htm',
     'profile-settings': './profile/settings.htm',
     'profile-security': './profile/security.htm',
     'profile-preferences': './profile/preferences.htm',
     
     // Portfolio section
     'portfolio': './portfolio/wallet.htm',
-    'portfolio-award': './portfolio/achievements.htm',
+    'portfolio-award': './portfolio/awards.htm',
     'portfolio-status': './portfolio/rank.htm',
-    'portfolio-preferences': './portfolio/preferences.htm',
+    'portfolio-preferences': './portfolio/wallet.htm',
     
     // Market section
-    'market': './market/marketplace.htm',
+    'market': './market/market.htm',
     'market-settings': './market/issues.htm',
     'market-security': './market/bugs.htm',
-    'market-preferences': './market/help.htm',
+    'market-preferences': './market/wanted.htm',
     
     // Work Tickets section
-    'active-tickets': './tickets/active.htm',
-    'completed-tickets': './tickets/completed.htm',
-    'create-ticket': './tickets/create.htm',
+    'tickets-active': './tickets/active.htm',
+    'tickets-completed': './tickets/completed.htm',
+    'tickets-create': './tickets/create.htm',
     
     // Settings section
-    'general-settings': './settings/general.htm',
-    'notification-settings': './settings/notifications.htm'
+    'settings-general': './settings/general.htm',
+    'settings-alerts': './settings/alerts.htm'
+    'settings-privacy': './settings/privacy.htm'
 };
 
 /**

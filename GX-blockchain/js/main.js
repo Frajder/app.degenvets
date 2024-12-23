@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeContentLoader();
 });
 
-// Dashboard functionality
+// Trying to consolidate dashboard.js and submenu.js logic into main.js
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
@@ -103,34 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const gearToggle = document.querySelector('.gear-toggle');
-if (gearToggle) {
-    gearToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const submenuId = this.getAttribute('data-submenu');
-        const submenu = document.getElementById(submenuId);
-        
-        // Toggle active classes
-        this.classList.toggle('active');
-        submenu.classList.toggle('active');
-    });
-}
-
-// Close gear submenu when clicking outside
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.gear-menu')) {
-        const gearSubmenu = document.querySelector('.gear-submenu');
-        const gearToggle = document.querySelector('.gear-toggle');
-        if (gearSubmenu) {
-            gearSubmenu.classList.remove('active');
-        }
-        if (gearToggle) {
-            gearToggle.classList.remove('active');
-        }
-    }
-
     const gearToggle = document.querySelector('.gear-toggle');
     if (gearToggle) {
         gearToggle.addEventListener('click', function(e) {
@@ -158,55 +130,33 @@ document.addEventListener('click', function(e) {
                 gearToggle.classList.remove('active');
             }
         }
-    });
-});
 
-// Export necessary functions
-export const initializeSidebar = () => {
-    // Dashboard initialization code here
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.querySelector('.overlay');
-    const menuItems = document.querySelectorAll('.sidebar a[data-page]');
-    
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-    });
-    
-    menuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = item.getAttribute('data-page');
-            loadContent(page);
-            
-            // Close sidebar on mobile
-            menuToggle.classList.remove('active');
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    });
-};
-
-export const initializeSubmenu = () => {
-    const menuToggles = document.querySelectorAll('.menu-toggle-btn');
-    
-    menuToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const submenuId = this.getAttribute('data-submenu');
-            const submenu = document.getElementById(submenuId);
-            
-            this.classList.toggle('active');
-            submenu.classList.toggle('active');
-            
-            // Close other submenus
-            document.querySelectorAll('.submenu.active').forEach(other => {
-                if (other.id !== submenuId) {
-                    other.classList.remove('active');
-                }
+        const gearToggle = document.querySelector('.gear-toggle');
+        if (gearToggle) {
+            gearToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const submenuId = this.getAttribute('data-submenu');
+                const submenu = document.getElementById(submenuId);
+                
+                // Toggle active classes
+                this.classList.toggle('active');
+                submenu.classList.toggle('active');
             });
+        }
+        
+        // Close gear submenu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.gear-menu')) {
+                const gearSubmenu = document.querySelector('.gear-submenu');
+                const gearToggle = document.querySelector('.gear-toggle');
+                if (gearSubmenu) {
+                    gearSubmenu.classList.remove('active');
+                }
+                if (gearToggle) {
+                    gearToggle.classList.remove('active');
+                }
+            }
         });
     });
-};
