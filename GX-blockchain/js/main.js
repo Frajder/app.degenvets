@@ -1,18 +1,4 @@
-// Imports
-import { initializeMarket } from './market.js';
-import { initializeChat } from './chat.js';
-import menuConfig from './menuConfig.js';
-import MenuHandler from './menuHandler.js';
-import { loadContent } from './contentLoader.js';
-
-// Main initialization
-document.addEventListener('DOMContentLoaded', () => {
-    initializeSidebar();
-    initializeSubmenu();
-    initializeContentLoader();
-});
-
-// Trying to consolidate dashboard.js and submenu.js logic into main.js
+// Initialize core menu functionality immediately
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
@@ -20,22 +6,26 @@ const menuItems = document.querySelectorAll('.sidebar a');
 const contentSections = document.querySelectorAll('.content-section');
 const connectBtn = document.querySelector('.connect-btn');
 
+// Menu toggle handler
 menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active');
 });
 
+// Overlay click handler
 overlay.addEventListener('click', () => {
     menuToggle.classList.remove('active');
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
 });
 
+// Connect button handler
 connectBtn.addEventListener('click', () => {
     console.log('Connect button clicked');
 });
 
+// Menu items click handlers
 menuItems.forEach(item => {
     item.addEventListener('click', () => {
         const page = item.getAttribute('data-page');
@@ -43,8 +33,10 @@ menuItems.forEach(item => {
             section.classList.remove('active');
         });
         const targetSection = document.getElementById(page);
-        targetSection.classList.add('active');
-        targetSection.classList.add('fade');
+        if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.classList.add('fade');
+        }
         menuToggle.classList.remove('active');
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
@@ -60,13 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Get the submenu ID from the data attribute
             const submenuId = this.getAttribute('data-submenu');
             const submenu = document.getElementById(submenuId);
             
             // Toggle active classes
             this.classList.toggle('active');
-            submenu.classList.toggle('active');
+            if (submenu) {
+                submenu.classList.toggle('active');
+            }
             
             // Close other submenus
             const otherSubmenus = document.querySelectorAll('.submenu.active');
@@ -160,3 +153,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+// If you need to import additional functionality later:
+// try {
+//     const { initializeMarket } = await import('./market.js');
+//     const { initializeChat } = await import('./chat.js');
+//     const { loadContent, initializeContentLoader } = await import('./contentLoader.js');
+    
+//     // Initialize additional modules
+//     initializeMarket();
+//     initializeChat();
+//     initializeContentLoader();
+// } catch (error) {
+//     console.error('Error loading modules:', error);
+// }
