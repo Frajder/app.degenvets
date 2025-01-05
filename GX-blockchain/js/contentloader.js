@@ -8,7 +8,7 @@
 // CSS class for fade animation
 const FADE_DURATION = 500; // milliseconds
 
-// Map of page identifiers to their corresponding HTML file paths
+// Map of page identifiers to their corresponding HTM file paths
 const PAGE_MAPPINGS = {
     // Profile section
     'profile-inbox': './profile/inbox.htm',
@@ -35,7 +35,7 @@ const PAGE_MAPPINGS = {
     
     // Settings section
     'settings-general': './settings/general.htm',
-    'settings-alerts': './settings/alerts.htm'
+    'settings-alerts': './settings/alerts.htm',
     'settings-privacy': './settings/privacy.htm'
 };
 
