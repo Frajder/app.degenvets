@@ -28,7 +28,7 @@ connectBtn.addEventListener('click', () => {
 
 // Menu items click handlers
 menuItems.forEach(item => {
-    item.addEventListener('click', async () => {
+    item.addEventListener('click', async (event) => {
         event.preventDefault();
         const page = item.getAttribute('data-page');
         if (pageName) {
@@ -162,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
 try {
      const { initializeMarket } = await import('./market.js');
      const { initializeChat } = await import('./chat.js');
-     const { loadContent, initializeContentLoader } = await import('./contentLoader.js');
     
      // Initialize additional modules
      initializeMarket();

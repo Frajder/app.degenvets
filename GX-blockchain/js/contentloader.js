@@ -82,7 +82,7 @@ export const loadContent = async (pageName) => {
     }
 
     // Show loading spinner
-    contentContainer.innerHTML = createLoadingSpinner();
+    contentContainer.innerHTML = `<div class="loading-spinner">Loading...</div>`;
 
     try {
         // Check if page exists in mappings
@@ -99,6 +99,7 @@ export const loadContent = async (pageName) => {
 
         // Get the HTML content
         const content = await response.text();
+        contentContainer.innerHTML = content;
 
         // Add fade-out effect
         contentContainer.classList.add('fade-out');
