@@ -1,4 +1,5 @@
-// Initialize core menu functionality immediately
+import { loadContent } from './contentloader.js';
+
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
@@ -27,8 +28,9 @@ connectBtn.addEventListener('click', () => {
 
 // Menu items click handlers
 menuItems.forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', async () => {
         const page = item.getAttribute('data-page');
+        await loadContent(pageName);
         contentSections.forEach(section => {
             section.classList.remove('active');
         });
