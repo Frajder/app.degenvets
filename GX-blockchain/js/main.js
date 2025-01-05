@@ -3,7 +3,7 @@ import { loadContent } from './contentloader.js';
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
-const menuItems = document.querySelectorAll('.sidebar a');
+const menuItems = document.querySelectorAll('.submenu a');
 const contentSections = document.querySelectorAll('.content-section');
 const connectBtn = document.querySelector('.connect-btn');
 
@@ -29,7 +29,9 @@ connectBtn.addEventListener('click', () => {
 // Menu items click handlers
 menuItems.forEach(item => {
     item.addEventListener('click', async () => {
+        event.preventDefault();
         const page = item.getAttribute('data-page');
+        if (pageName) {
         await loadContent(pageName);
         contentSections.forEach(section => {
             section.classList.remove('active');
@@ -42,6 +44,7 @@ menuItems.forEach(item => {
         menuToggle.classList.remove('active');
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
+    }
     });
 });
 
@@ -156,16 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-// If you need to import additional functionality later:
-// try {
-//     const { initializeMarket } = await import('./market.js');
-//     const { initializeChat } = await import('./chat.js');
-//     const { loadContent, initializeContentLoader } = await import('./contentLoader.js');
+try {
+     const { initializeMarket } = await import('./market.js');
+     const { initializeChat } = await import('./chat.js');
+     const { loadContent, initializeContentLoader } = await import('./contentLoader.js');
     
-//     // Initialize additional modules
-//     initializeMarket();
-//     initializeChat();
-//     initializeContentLoader();
-// } catch (error) {
-//     console.error('Error loading modules:', error);
-// }
+     // Initialize additional modules
+     initializeMarket();
+     initializeChat();
+     initializeContentLoader();
+ } catch (error) {
+     console.error('Error loading modules:', error);
+ }
