@@ -31,8 +31,9 @@ menuItems.forEach(item => {
     item.addEventListener('click', async (event) => {
         event.preventDefault();
         const page = item.getAttribute('data-page');
-        if (pageName) {
-        await loadContent(pageName);
+        if (page) {
+        console.log('Loading page:', page);
+        await loadContent(page);
         contentSections.forEach(section => {
             section.classList.remove('active');
         });

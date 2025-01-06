@@ -82,7 +82,7 @@ export const loadContent = async (pageName) => {
     }
 
     // Show loading spinner
-    contentContainer.innerHTML = `<div class="loading-spinner">Loading...</div>`;
+    contentContainer.innerHTML = createLoadingSpinner();
 
     try {
         // Check if page exists in mappings
