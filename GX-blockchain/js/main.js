@@ -8,7 +8,9 @@ const contentSections = document.querySelectorAll('.content-section');
 const connectBtn = document.querySelector('.connect-btn');
 
 // Menu toggle handler
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     menuToggle.classList.toggle('active');
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active');
@@ -101,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
     const gearToggle = document.querySelector('.gear-toggle');
     if (gearToggle) {
