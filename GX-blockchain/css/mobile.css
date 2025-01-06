@@ -35,6 +35,8 @@
 
     .sidebar-footer {
         width: 280px;
+        padding: 10px;
+        font-size: 12px;
     }
 
     .sidebar-content {
@@ -44,6 +46,8 @@
     .submenu a {
         padding: 10px 20px 10px 35px !important;
         font-size: 15px !important;
+        overflow: visible;
+        overflow-x: hidden;
     }
 
     .content {
@@ -62,6 +66,11 @@
         padding: 8px 16px;
         font-size: 0.9rem;
     }
+
+    .gear-submenu {
+        min-width: 130px;
+    }
+}
 }
 
 
@@ -107,8 +116,16 @@
     }
 
     .sidebar {
-        width: 250px; /* Even smaller for mobile */
+        width: 250px; 
         left: -250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .sidebar-logo {
+        padding: 20px;
+        text-align: center;
+        margin-top: 10px;
     }
 
     .sidebar a {
@@ -117,17 +134,20 @@
     }
 
     .sidebar-footer {
-        width: 250px; /* Match sidebar width */
+        width: 250px; 
         padding: 10px;
         font-size: 12px;
     }
 
     .sidebar-content {
         padding: 60px 0 60px 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .submenu {
-        background-color: rgba(0, 0, 0, 0.4); /* Darker background for better visibility */
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .submenu a {
