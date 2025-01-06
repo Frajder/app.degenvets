@@ -135,21 +135,56 @@ body {
     }
 
     .sidebar-footer {
-        transform: translateX(-100%); /* Hide when sidebar is closed */
-        width: 280px; /* Match mobile sidebar width */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 280px; /* Match sidebar width */
+        transform: translateX(-100%); /* Hide initially */
+        transition: transform 0.3s ease-in-out;
+        z-index: 1002;
+        background-color: rgba(17, 17, 17, 0.95);
     }
 
     .sidebar.active .sidebar-footer {
         transform: translateX(0); /* Show when sidebar is open */
     }
 
+    .gear-menu {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
     .gear-submenu {
-        bottom: 120%; /* Adjust position for mobile */
-        min-width: 130px; /* Slightly smaller for mobile */
+        position: absolute;
+        bottom: 150%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 150px;
+        background-color: rgba(0, 0, 0, 0.95);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
     }
 }
 
 /* Tablet optimization*/
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar-footer {
+        width: 280px;
+        position: fixed;
+    }
+
+    .gear-submenu {
+        bottom: 130%;
+    }
+
+    .sidebar-content {
+        padding-bottom: 70px;
+    }
+}
+
 @media (hover: none) {
     .sidebar-content {
         -webkit-overflow-scrolling: touch;
