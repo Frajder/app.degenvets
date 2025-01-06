@@ -27,6 +27,7 @@ body {
     position: relative;
     overflow: visible !important;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .menu-item.expanded {
@@ -34,23 +35,20 @@ body {
 }
 
 .submenu {
-    position: static;
+    position: static; 
     width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: none; 
+    transition: opacity 0.3s ease-out;
     opacity: 0;
-    visibility: visible;
+    display: none; 
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 1001;
     -webkit-overflow-scrolling: touch;
 }
 
 .submenu.active {
-    max-height: none;
     opacity: 1;
-    visibility: visible;
-    height: auto;
+    display: block;
 }
 
 .sidebar {
@@ -80,10 +78,10 @@ body {
 .sidebar-footer {
     position: fixed;
     bottom: 0;
-    width: 300px;
+    left: 0;
+    width: 100%;
     padding: 15px 10px;
     background-color: rgba(17, 17, 17, 0.95);
-    border-top: 1px solid rgba(0, 255, 255, 0.2);
     z-index: 1002;
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
@@ -94,11 +92,13 @@ body {
 .sidebar.active .sidebar-footer {
     -webkit-transform: translateX(0);
     transform: translateX(0);
+    width: 280px;
 }
 
+.menu-toggle-btn,
 .submenu a {
-    padding: 15px 25px 15px 40px !important;
-    min-height: 44px; /* Apple's minimum touch target size */
+    padding: 12px 25px !important;
+    min-height: 44px;
     display: flex;
     align-items: center;
     touch-action: manipulation;
@@ -204,9 +204,11 @@ body {
         bottom: 0;
         height: auto;
         padding: 10px;
+        display: block !important;
+        visibility: visible !important;
     }
     
     .sidebar-content {
-        padding-bottom: 60px !important;
+        padding-bottom: 80px !important;
     }
 }
