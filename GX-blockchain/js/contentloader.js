@@ -37,6 +37,7 @@ const PAGE_MAPPINGS = {
     'settings-general': './settings/general.htm',
     'settings-alerts': './settings/alerts.htm',
     'settings-privacy': './settings/privacy.htm'
+    
 };
 
 /**
