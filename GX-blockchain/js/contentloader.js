@@ -37,6 +37,7 @@ const PAGE_MAPPINGS = {
     'settings-general': './settings/general.htm',
     'settings-alerts': './settings/alerts.htm',
     'settings-privacy': './settings/privacy.htm'
+    
 };
 
 /**
@@ -99,6 +100,7 @@ export const loadContent = async (pageName) => {
 
         // Get the HTML content
         const content = await response.text();
+        contentContainer.innerHTML = content;
 
         // Add fade-out effect
         contentContainer.classList.add('fade-out');

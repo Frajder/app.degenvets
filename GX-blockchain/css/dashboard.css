@@ -44,25 +44,50 @@ body {
 
 .submenu {
     max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    overflow: visible;
+    overflow-x: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
 }
 
 .submenu.active {
-    max-height: 500px; /* Adjust based on your needs */
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
 }
 
 .submenu a {
     padding: 12px 25px 12px 40px !important;
     font-size: 16px !important;
     color: #00cccc !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .submenu-arrow {
     display: inline-block;
     transition: transform 0.3s;
     font-size: 12px;
+}
+
+.gear-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.gear-submenu {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 150px;
+    background-color: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    z-index: 1002;
 }
 
 .menu-toggle-btn.active .submenu-arrow {
@@ -102,16 +127,18 @@ body {
 
 .sidebar {
     height: 100vh;
-    width: 250px;
+    width: 300px;
     position: fixed;
     padding-top: 0; 
-    left: -250px;
+    left: -300px;
     background-color: rgba(17, 17, 17, 0.95);
     transition: 0.3s;
     z-index: 1000;
     box-shadow: 0 0 15px #00d4ff, 0 0 30px #00d4ff;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar-logo {
@@ -135,6 +162,7 @@ body {
 
 .sidebar.active {
     left: 0;
+    transform: translateX(0);
 }
 
 .sidebar a {
@@ -157,21 +185,26 @@ body {
 .sidebar-content {
     flex: 1;
     padding-top: 20px;
+    padding: 80px 0 60px 0;
     overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .sidebar-footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 300px;
     padding: 15px;
-    text-align: center;
+    text-align: left;
     background-color:transparent;
     color: #00ffff;
     text-shadow: 0 0 5px #00ffff;
     border-top: 1px solid rgba(0, 255, 255, 0.2);
-    font-size: 0.9em;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+    font-size: 0.7em;
 }
 .sidebar-footer a {
     .sidebar-footer {
@@ -185,11 +218,11 @@ body {
         color: #00ffff;
         text-shadow: 0 0 5px #00ffff;
         border-top: 1px solid rgba(0, 255, 255, 0.2);
-        font-size: 0.9em;
+        font-size: 0.7em;
     }
 }
 .sidebar a:last-child {
-    margin-bottom: 10px; /* Adjust based on footer height */
+    margin-bottom: 7px; /* Adjust based on footer height */
 }
 
 

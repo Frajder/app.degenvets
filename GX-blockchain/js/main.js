@@ -3,12 +3,14 @@ import { loadContent } from './contentloader.js';
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
-const menuItems = document.querySelectorAll('.sidebar a');
+const menuItems = document.querySelectorAll('.submenu a');
 const contentSections = document.querySelectorAll('.content-section');
 const connectBtn = document.querySelector('.connect-btn');
 
 // Menu toggle handler
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     menuToggle.classList.toggle('active');
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active');
@@ -28,9 +30,12 @@ connectBtn.addEventListener('click', () => {
 
 // Menu items click handlers
 menuItems.forEach(item => {
-    item.addEventListener('click', async () => {
+    item.addEventListener('click', async (event) => {
+        event.preventDefault();
         const page = item.getAttribute('data-page');
-        await loadContent(pageName);
+        if (page) {
+        console.log('Loading page:', page);
+        await loadContent(page);
         contentSections.forEach(section => {
             section.classList.remove('active');
         });
@@ -42,6 +47,7 @@ menuItems.forEach(item => {
         menuToggle.classList.remove('active');
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
+    }
     });
 });
 
@@ -97,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
     const gearToggle = document.querySelector('.gear-toggle');
     if (gearToggle) {
@@ -156,16 +163,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-// If you need to import additional functionality later:
-// try {
-//     const { initializeMarket } = await import('./market.js');
-//     const { initializeChat } = await import('./chat.js');
-//     const { loadContent, initializeContentLoader } = await import('./contentLoader.js');
+try {
+     const { initializeMarket } = await import('./market.js');
+     const { initializeChat } = await import('./chat.js');
     
-//     // Initialize additional modules
-//     initializeMarket();
-//     initializeChat();
-//     initializeContentLoader();
-// } catch (error) {
-//     console.error('Error loading modules:', error);
-// }
+     // Initialize additional modules
+     initializeMarket();
+     initializeChat();
+     initializeContentLoader();
+ } catch (error) {
+     console.error('Error loading modules:', error);
+ }
