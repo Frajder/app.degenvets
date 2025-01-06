@@ -197,14 +197,14 @@ body {
     left: 0;
     width: 300px;
     padding: 15px;
-    text-align: center;
+    text-align: left;
     background-color:transparent;
     color: #00ffff;
     text-shadow: 0 0 5px #00ffff;
     border-top: 1px solid rgba(0, 255, 255, 0.2);
     z-index: 1001;
     transition: transform 0.3s ease-in-out;
-    font-size: 0.9em;
+    font-size: 0.7em;
 }
 .sidebar-footer a {
     .sidebar-footer {
@@ -218,11 +218,11 @@ body {
         color: #00ffff;
         text-shadow: 0 0 5px #00ffff;
         border-top: 1px solid rgba(0, 255, 255, 0.2);
-        font-size: 0.9em;
+        font-size: 0.7em;
     }
 }
 .sidebar a:last-child {
-    margin-bottom: 10px; /* Adjust based on footer height */
+    margin-bottom: 7px; /* Adjust based on footer height */
 }
 
 
