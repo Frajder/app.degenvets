@@ -46,12 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.toggle('active');
             if (submenu) {
                 submenu.classList.toggle('active');
-
                 submenuWrapper?.classList.toggle('expanded');
                 
                 // Adjust submenu max height for animation
                 if (submenu.classList.contains('active')) {
-                    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                    submenu.style.maxHeight = 'none';
                 } else {
                     submenu.style.maxHeight = '0px';
                 }
