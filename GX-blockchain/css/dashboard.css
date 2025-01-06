@@ -174,7 +174,7 @@ body {
 }
 
 .sidebar-footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 300px;
@@ -190,7 +190,7 @@ body {
 }
 .sidebar-footer a {
     .sidebar-footer {
-        position: absolute;
+        position: relative;
         bottom: 0;
         left: 0;
         width: 100%;
