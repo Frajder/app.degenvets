@@ -188,6 +188,7 @@ body {
     transition: transform 0.3s ease-in-out;
     font-size: 0.7em;
 }
+
 .sidebar-footer a {
     .sidebar-footer {
         position: absolute;

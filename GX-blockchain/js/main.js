@@ -1,3 +1,4 @@
+// Import required modules
 import { loadContent, initializeContentLoader } from './contentloader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
