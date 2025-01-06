@@ -37,25 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-
+    
             const submenuId = this.getAttribute('data-submenu');
             const submenu = document.getElementById(submenuId);
             const submenuWrapper = this.closest('.menu-item');
-
+    
             // Toggle active classes
             this.classList.toggle('active');
             if (submenu) {
                 submenu.classList.toggle('active');
                 submenuWrapper?.classList.toggle('expanded');
                 
-                // Adjust submenu max height for animation
+                // Remove fixed height for mobile
                 if (submenu.classList.contains('active')) {
                     submenu.style.maxHeight = 'none';
                 } else {
                     submenu.style.maxHeight = '0px';
                 }
-
-                                
+                
                 // Close other submenus
                 document.querySelectorAll('.submenu.active').forEach(other => {
                     if (other.id !== submenuId) {
@@ -63,12 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         other.style.maxHeight = '0px';
                         const otherToggle = document.querySelector(`[data-submenu="${other.id}"]`);
                         const otherWrapper = other.closest('.menu-item');
-                        if (otherToggle) {
-                            otherToggle.classList.remove('active');
-                        }
-                        if (otherWrapper) {
-                            otherWrapper.classList.remove('expanded');
-                        }
+                        otherToggle?.classList.remove('active');
+                        otherWrapper?.classList.remove('expanded');
                     }
                 });
             }
