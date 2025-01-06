@@ -30,29 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Connect button clicked');
     });
 
-    // Menu items click handlers
-menuItems.forEach(item => {
-    item.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const page = item.getAttribute('data-page');
-        if (page) {
-        console.log('Loading page:', page);
-        await loadContent(page);
-        contentSections.forEach(section => {
-            section.classList.remove('active');
-        });
-        const targetSection = document.getElementById(page);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            targetSection.classList.add('fade');
-        }
-        menuToggle.classList.remove('active');
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    }
-    });
-});
-
     // Submenu toggle functionality
     const menuToggles = document.querySelectorAll('.menu-toggle-btn');
     
@@ -153,19 +130,13 @@ menuItems.forEach(item => {
         submenu?.classList.toggle('active');
     });
 
-        // Close gear submenu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.gear-menu')) {
-                const gearSubmenu = document.querySelector('.gear-submenu');
-                const gearToggle = document.querySelector('.gear-toggle');
-                if (gearSubmenu) {
-                    gearSubmenu.classList.remove('active');
-                }
-                if (gearToggle) {
-                    gearToggle.classList.remove('active');
-                }
-            }
-        });
+    // Close gear menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.gear-menu')) {
+            const gearSubmenu = document.querySelector('.gear-submenu');
+            gearSubmenu?.classList.remove('active');
+            gearToggle?.classList.remove('active');
+        }
     });
 
     // Initialize content loader
@@ -174,15 +145,4 @@ menuItems.forEach(item => {
     } catch (error) {
         console.error('Error initializing content loader:', error);
     }
-
-    try {
-        const { initializeMarket } = await import('./market.js');
-        const { initializeChat } = await import('./chat.js');
-       
-        // Initializing additional modules
-        initializeMarket();
-        initializeChat();
-        initializeContentLoader();
-    } catch (error) {
-        console.error('Error loading modules:', error);
-    }
+});
