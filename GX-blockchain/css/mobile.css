@@ -23,8 +23,8 @@
     }
 
     .sidebar {
-        width: 260px;
-        left: -260px;
+        width: 280px;
+        left: -280px;
         padding-top: 60px;
     }
 
@@ -34,16 +34,16 @@
     }
 
     .sidebar-footer {
-        width: 260px;
+        width: 280px;
     }
 
     .sidebar-content {
-        padding: 50px 0 80px 0;
+        padding: 70px 0 60px 0;
     }
 
     .submenu a {
-        padding: 8px 20px 8px 35px !important;
-        font-size: 14px !important;
+        padding: 10px 20px 10px 35px !important;
+        font-size: 15px !important;
     }
 
     .content {
@@ -71,7 +71,7 @@
         left: 5px;
         padding: 6px;
     }
-    
+
     .menu-toggle-btn {
         padding: 12px 20px;
         font-size: 16px;
@@ -107,8 +107,8 @@
     }
 
     .sidebar {
-        width: 220px; /* Even smaller for mobile */
-        left: -220px;
+        width: 250px; /* Even smaller for mobile */
+        left: -250px;
     }
 
     .sidebar a {
@@ -117,13 +117,13 @@
     }
 
     .sidebar-footer {
-        width: 220px; /* Match sidebar width */
+        width: 250px; /* Match sidebar width */
         padding: 10px;
         font-size: 12px;
     }
 
     .sidebar-content {
-        padding: 40px 0 70px 0;
+        padding: 60px 0 60px 0;
     }
 
     .submenu {
@@ -132,8 +132,12 @@
 
     .submenu a {
         padding: 8px 15px 8px 30px !important;
-        font-size: 13px !important;
+        font-size: 14px !important;
         color: #00ffff !important;
+    }
+    
+    .gear-submenu {
+        min-width: 130px;
     }
 }
 
@@ -183,4 +187,21 @@
         padding: 4px 10px;
         font-size: 0.7rem;
     }
+}
+
+
+/* Touch device optimization */
+@media (hover: none) {
+    .sidebar-content {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .submenu {
+        transition: max-height 0.3s ease-out;
+    }
+}
+
+/* Ensure smooth transitions */
+* {
+    -webkit-tap-highlight-color: transparent;
 }
