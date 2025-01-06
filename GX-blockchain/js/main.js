@@ -30,6 +30,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Connect button clicked');
     });
 
+    // Menu items click handlers
+menuItems.forEach(item => {
+    item.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const page = item.getAttribute('data-page');
+        if (page) {
+        console.log('Loading page:', page);
+        await loadContent(page);
+        contentSections.forEach(section => {
+            section.classList.remove('active');
+        });
+        const targetSection = document.getElementById(page);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.classList.add('fade');
+        }
+        menuToggle.classList.remove('active');
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+    });
+});
+
     // Submenu toggle functionality
     const menuToggles = document.querySelectorAll('.menu-toggle-btn');
     
