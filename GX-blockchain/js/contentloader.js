@@ -1,14 +1,6 @@
-// contentLoader.js
-
-/**
- * Handles dynamic content loading for the application
- * Maps page names to their corresponding HTML files and manages the loading process
- */
-
 // CSS class for fade animation
-const FADE_DURATION = 500; // milliseconds
+const FADE_DURATION = 300; // milliseconds
 
-// Map of page identifiers to their corresponding HTM file paths
 const PAGE_MAPPINGS = {
     // Profile section
     'profile-inbox': './profile/inbox.htm',
@@ -55,8 +47,8 @@ const createLoadingSpinner = () => {
 
 /**
  * Creates an error message element
- * @param {string} message - The error message to display
- * @returns {string} HTML for the error message
+ * @param {string} message 
+ * @returns {string} 
  */
 const createErrorMessage = (message) => {
     return `
@@ -72,7 +64,7 @@ const createErrorMessage = (message) => {
 
 /**
  * Loads content into the specified container
- * @param {string} pageName - The identifier for the page to load
+ * @param {string} pageName 
  * @returns {Promise<void>}
  */
 export const loadContent = async (pageName) => {
@@ -81,67 +73,53 @@ export const loadContent = async (pageName) => {
         console.error('Content container not found');
         return;
     }
-
-    // Show loading spinner
     contentContainer.innerHTML = createLoadingSpinner();
+    contentContainer.classList.add('fade-out');
 
     try {
-        // Check if page exists in mappings
         const pageUrl = PAGE_MAPPINGS[pageName];
         if (!pageUrl) {
             throw new Error(`No mapping found for page "${pageName}"`);
         }
-
-        // Fetch the content
+        console.log(`Fetching content from: ${pageUrl}`);
         const response = await fetch(pageUrl);
         if (!response.ok) {
             throw new Error(`Failed to load page: ${response.statusText}`);
         }
-
-        // Get the HTML content
         const content = await response.text();
-        contentContainer.innerHTML = content;
-
-        // Add fade-out effect
-        contentContainer.classList.add('fade-out');
-
-        // Wait for fade-out
         await new Promise(resolve => setTimeout(resolve, FADE_DURATION));
-
-        // Update content and fade in
-        contentContainer.innerHTML = content;
+         contentContainer.innerHTML = content;
         contentContainer.classList.remove('fade-out');
         contentContainer.classList.add('fade-in');
-
-        // Remove fade-in class after animation
+// cleanup
         setTimeout(() => {
             contentContainer.classList.remove('fade-in');
         }, FADE_DURATION);
 
-        // Update page title if available
+// pg title
         const titleElement = contentContainer.querySelector('h1');
         if (titleElement) {
             document.title = `DegenVets - ${titleElement.textContent}`;
         }
-
     } catch (error) {
         console.error('Content loading error:', error);
         contentContainer.innerHTML = createErrorMessage(
             'Unable to load the requested page. Please try again later.'
         );
+        contentContainer.classList.remove('fade-out');
     }
 };
-
-
 export const initializeContentLoader = () => {
     const style = document.createElement('style');
     style.textContent = `
         .fade-in {
-            animation: fadeIn ${FADE_DURATION}ms ease-in-out;
+            opacity: 1;
+            animation: fadeIn 0.3s ease-in forwards;
         }
         
         .fade-out {
-            animation: fadeOut ${FADE_DURATION}ms ease-in-out;
+            opacity: 0;
+            animation: fadeOut 0.3s ease-out forwards;
         }
         
         @keyframes fadeIn {
@@ -157,8 +135,14 @@ export const initializeContentLoader = () => {
         .loading-spinner {
             text-align: center;
             padding: 2rem;
+            opacity: 1;
         }
-        
+
+        #all {
+        display: block !important;
+        opacity: 1 !important;
+        }
+
         .spinner {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #00ffff;
