@@ -82,6 +82,7 @@ body {
     width: 100%;
     padding: 15px 10px;
     background-color: rgba(17, 17, 17, 0.95);
+    
     z-index: 1002;
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
@@ -195,6 +196,11 @@ body {
     .gear-submenu {
         bottom: 120%; /* Adjust position for mobile */
         min-width: 130px; /* Slightly smaller for mobile */
+    }
+
+    .gear-submenu a {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
     }
 }
 
