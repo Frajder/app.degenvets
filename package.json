@@ -1,5 +1,17 @@
 {
-  "dependencies": {
-    "openai": "^4.76.2"
+  "name": "degenvets",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "http-server ./GX-blockchain -p 3000 --cors",
+    "dev": "http-server ./GX-blockchain -p 3000 -c-1 --cors",
+    "security": "npm audit",
+    "outdated": "npm outdated"
+  },
+  "devDependencies": {
+    "http-server": "14.1.1"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
   }
 }
