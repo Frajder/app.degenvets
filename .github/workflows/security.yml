@@ -1,0 +1,47 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run npm audit
+        run: npm audit
+        
+      - name: Run Snyk scan
+        if: env.SNYK_TOKEN != ''  # Only run if token exists
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          
+      - name: Generate dependency report
+        run: |
+          echo "## Dependency Report" > dependency-report.md
+          echo "### Direct Dependencies" >> dependency-report.md
+          npm list --depth=0 >> dependency-report.md
+          echo "### Security Audit" >> dependency-report.md
+          npm audit >> dependency-report.md
+          
+      - name: Upload dependency report
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-report
+          path: dependency-report.md 
